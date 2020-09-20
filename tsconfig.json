@@ -1,12 +1,19 @@
 {
-	"extends": "./tsconfig.test.json",
-	"compilerOptions": {
-		"declaration": true,
-		"sourceMap": true,
-		"sourceRoot": "../",
-		"outDir": "dist"
-	},
-	"files": [
-		"index.ts"
-	]
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["esnext", "webworker"],
+    "alwaysStrict": true,
+    "strict": true,
+    "preserveConstEnums": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "./*.ts",
+    "./**/*.ts"
+  ],
+  "exclude": ["node_modules/", "dist/"]
 }
