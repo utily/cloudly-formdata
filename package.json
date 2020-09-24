@@ -2,7 +2,7 @@
  "name": "cloud-formdata",
  "version": "0.0.1",
  "description": "Template for NPM library",
- "author": "PayFunc",
+ "author": "Cogneco AB",
  "license": "MIT",
  "repository": "https://github.com/cogneco/cloud-formdata",
  "bugs": {
@@ -27,8 +27,8 @@
  },
  "scripts": {
   "dev": "watch 'npm run build' .",
-  "lint": "eslint '**/*.{js,ts,tsx}'",
-  "fix": "eslint '**/*.{js,ts,tsx}' --fix",
+  "lint": "eslint '**/*.{js,ts,tsx,css,json,md}'",
+  "fix": "eslint '**/*.{js,ts,tsx,css,json,md}' --fix",
   "build": "tsc -p .",
   "test": "npm run transpile && jest",
   "transpile": "tsc --project ./tsconfig.test.json",
