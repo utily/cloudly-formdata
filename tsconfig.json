@@ -4,16 +4,15 @@
     "module": "commonjs",
     "target": "esnext",
     "lib": ["esnext", "webworker"],
+    "sourceMap": true,
+		"declaration": true,
     "alwaysStrict": true,
     "strict": true,
     "preserveConstEnums": true,
     "moduleResolution": "node",
-    "sourceMap": true,
-    "esModuleInterop": true
+		"esModuleInterop": true
   },
   "include": [
-    "./*.ts",
-    "./**/*.ts"
-  ],
-  "exclude": ["node_modules/", "dist/"]
+		"index.ts"
+  ]
 }
