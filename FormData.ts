@@ -1,5 +1,6 @@
 import { Blob } from "./Blob"
 import { File } from "./File"
+import { TextFile } from "./TextFile"
 import { FormDataEntryValue } from "./FormDataEntryValue"
 
 export class FormData {
@@ -26,7 +27,7 @@ export class FormData {
 		return !this.data[name]
 	}
 	set(name: string, value: string | Blob, fileName?: string): void {
-		this.data[name] = [typeof value == "string" ? value : new File(value, fileName || "")]
+		this.data[name] = [!fileName && typeof value == "string" ? value : typeof value == "string" ? new TextFile(value, fileName) : new File(value, fileName || "")]
 	}
 	[Symbol.iterator](): IterableIterator<[string, FormDataEntryValue]> {
 		return this.entries()
@@ -93,7 +94,7 @@ export class FormData {
 								`--${boundary}\r\nContent-Disposition: form-data; name="${field[0]}"; filename="${field[1].name}"\r\nContent-Type: ${field[1].type}\r\n\r\n`
 							)
 						)
-						controller.enqueue(field[1].data)
+						controller.enqueue(typeof field[1].data == "string" ? new TextEncoder().encode(field[1].data) : field[1].data)
 						controller.enqueue(encoder.encode("\r\n"))
 					}
 				}
@@ -114,7 +115,7 @@ export class FormData {
 					yield encoder.encode(
 						`--${boundary}\r\nContent-Disposition: form-data; name="${field[0]}"; filename="${field[1].name}"\r\nContent-Type: ${field[1].type}\r\n\r\n`
 					)
-					yield field[1].data
+					yield typeof field[1].data == "string" ? new TextEncoder().encode(field[1].data) : field[1].data
 					yield encoder.encode("\r\n")
 				}
 			}

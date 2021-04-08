@@ -124,8 +124,8 @@ It contains two lines of content.\r
     
     Information ranging from 2021-01-01 to 2021-03-31
     --X-BOUNDARY
-    Content-Disposition: form-data; name="FileExample"
-    
+    Content-Disposition: form-data; name="FileExample"; filename="example.csv"
+		Content-Type:text/csv
     field1,field2,start date,end date,another date,created,gross,fee,net,currency
     "example1","exampleA","2020-02-01","2020-02-07","2020-03-02","2020-01-16","2","3","4","EUR"
     "example2","exampleA","2020-02-01","2020-02-07","2020-03-02","2020-01-16","2","3","4","EUR"
