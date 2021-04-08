@@ -60,6 +60,21 @@ export class FormData {
 	toJSON(): any {
 		return this.data
 	}
+	toString(boundary: string): string {
+		let result: string = ""
+		const fields = this.entries()
+		for (const field of fields) {
+			if (typeof field[1] == "string")
+				result += `--${boundary}\r\nContent-Disposition: form-data; name="${field[0]}"\r\n\r\n${field[1]}\r\n`
+			else {
+				result += `--${boundary}\r\nContent-Disposition: form-data; name="${field[0]}"; filename="${field[1].name}"\r\nContent-Type: ${field[1].type}\r\n\r\n`
+				result += field[1].data
+				result += "\r\n"
+			}
+		}
+		result += `--${boundary}--\r\n`
+		return result
+	}
 	toStream(boundary: string): ReadableStream<Uint8Array> {
 		const fields = this.entries()
 		return new ReadableStream<Uint8Array>({
