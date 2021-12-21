@@ -1,14 +1,14 @@
 {
- "name": "cloud-formdata",
+ "name": "cloudly-formdata",
  "version": "0.0.7",
- "description": "Template for NPM library",
- "author": "Cogneco AB",
+ "description": "Parser and generator for FormData as replacement for Cloudflare Workers but with support for files.",
+ "author": "Simon Mika <simon@mika.se>",
  "license": "MIT",
- "repository": "https://github.com/cogneco/cloud-formdata",
+ "repository": "https://github.com/utily/cloudle-formdata",
  "bugs": {
-  "url": "https://github.com/cogneco/cloud-formdata/issues"
+  "url": "https://github.com/utily/cloudle-formdata/issues"
  },
- "homepage": "https://github.com/cogneco/cloud-formdata",
+ "homepage": "https://github.com/utily/cloudle-formdata",
  "private": false,
  "main": "dist/index.js",
  "typings": "dist/index.d.ts",
@@ -47,17 +47,18 @@
   "test": "jest",
   "test:watch": "watch jest",
   "prepare": "npm run build",
-  "clean": "rm -rf dist node_modules coverage"
+  "clean": "rimraf dist node_modules coverage"
  },
  "dependencies": {},
  "devDependencies": {
   "@types/jest": "^26.0.20",
   "@typescript-eslint/eslint-plugin": "4.12.0",
   "@typescript-eslint/parser": "4.12.0",
-  "eslint": "7.17.0",
-  "eslint-plugin-prettierx": "github:nilssonemma/eslint-plugin-prettierx#master",
-  "jest": "^26.6.3",
-  "prettierx": "github:simonmika/prettierx#newline-before-clause",
+  "eslint": "^7.32.0",
+	"eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20211221",
+	"eslint-plugin-simple-import-sort": "^7.0.0",
+	"jest": "^26.6.3",
+	"prettierx": "github:utily/prettierx#utily-20211221",
   "ts-jest": "^26.4.4",
   "ts-loader": "^8.0.14",
   "typescript": "^4.1.3"
