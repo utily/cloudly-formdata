@@ -1,6 +1,6 @@
 {
  "name": "cloudly-formdata",
- "version": "0.0.7",
+ "version": "0.0.8",
  "description": "Parser and generator for FormData as replacement for Cloudflare Workers but with support for files.",
  "author": "Simon Mika <simon@mika.se>",
  "license": "MIT",
@@ -55,10 +55,10 @@
   "@typescript-eslint/eslint-plugin": "4.12.0",
   "@typescript-eslint/parser": "4.12.0",
   "eslint": "^7.32.0",
-	"eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20211221",
-	"eslint-plugin-simple-import-sort": "^7.0.0",
-	"jest": "^26.6.3",
-	"prettierx": "github:utily/prettierx#utily-20211221",
+  "eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20211221",
+  "eslint-plugin-simple-import-sort": "^7.0.0",
+  "jest": "^26.6.3",
+  "prettierx": "github:utily/prettierx#utily-20211221",
   "ts-jest": "^26.4.4",
   "ts-loader": "^8.0.14",
   "typescript": "^4.1.3"
