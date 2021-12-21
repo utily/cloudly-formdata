@@ -27,7 +27,13 @@ export class FormData {
 		return !this.data[name]
 	}
 	set(name: string, value: string | Blob, fileName?: string): void {
-		this.data[name] = [!fileName && typeof value == "string" ? value : typeof value == "string" ? new TextFile(value, fileName) : new File(value, fileName || "")]
+		this.data[name] = [
+			!fileName && typeof value == "string"
+				? value
+				: typeof value == "string"
+				? new TextFile(value, fileName)
+				: new File(value, fileName || ""),
+		]
 	}
 	[Symbol.iterator](): IterableIterator<[string, FormDataEntryValue]> {
 		return this.entries()
@@ -62,7 +68,7 @@ export class FormData {
 		return this.data
 	}
 	toString(boundary: string): string {
-		let result: string = ""
+		let result = ""
 		const fields = this.entries()
 		for (const field of fields) {
 			if (typeof field[1] == "string")
@@ -94,7 +100,9 @@ export class FormData {
 								`--${boundary}\r\nContent-Disposition: form-data; name="${field[0]}"; filename="${field[1].name}"\r\nContent-Type: ${field[1].type}\r\n\r\n`
 							)
 						)
-						controller.enqueue(typeof field[1].data == "string" ? new TextEncoder().encode(field[1].data) : field[1].data)
+						controller.enqueue(
+							typeof field[1].data == "string" ? new TextEncoder().encode(field[1].data) : field[1].data
+						)
 						controller.enqueue(encoder.encode("\r\n"))
 					}
 				}
