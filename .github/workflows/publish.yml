@@ -4,28 +4,31 @@ on:
   push:
     tags:
       - "release-*"
+permissions:
+  contents: read
+  id-token: write   # Required for OIDC
 jobs:
   publish:
-    name: "Publish from master"
+    name: "Publish"
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout source code"
-        uses: "actions/checkout@v2"
-      - name: "Setup Node"
-        uses: "actions/setup-node@v2"
+        uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: 16
-      - name: Update NPM
-        run: npm install -g npm
+          node-version: 24
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Publish
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc  
-          npm publish --access public
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then
+            npm publish --access public --tag prerelease
+          else
+            npm publish --access public
+          fi
         shell: bash
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
